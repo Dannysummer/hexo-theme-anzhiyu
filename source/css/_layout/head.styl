@@ -803,3 +803,38 @@ if hexo-config('dynamicEffect') && hexo-config('dynamicEffect.postTopWave')
   100%
     opacity: 0.5;
     transform: rotate(10deg) translateY(-10%) scale(var(--anzhiyu-header-cover-scale));
+
+// 首页视频背景样式
+if hexo-config('index_video')
+  #home-banner-video
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+    z-index: -1
+
+    .banner-video
+      width: 100%
+      height: 100%
+      object-fit: cover
+      pointer-events: none
+
+      &.hide-mobile
+        +maxWidth768()
+          display: none
+
+    &::after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background: rgba(0, 0, 0, 0.3)
+
+  // 视频背景时隐藏背景图片
+  #page-header.full_page
+    background-image: none !important
+    background-color: transparent !important

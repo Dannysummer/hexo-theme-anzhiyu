@@ -42,7 +42,7 @@ header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
         #post-top-cover
           img#post-top-bg(class='nolazyload' src=bg_img)
 
-    else if is_home() 
+    else if is_home()
       #site-info
         h1#site-title=site_title
         if theme.subtitle.enable
@@ -52,6 +52,13 @@ header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
         if(theme.social)
           #site_social_icons
             !=fragment_cache('social', function(){return partial('includes/header/social')})
+      if theme.index_video && theme.index_video.url
+        #home-banner-video
+          video.banner-video(
+            autoplay loop muted playsinline
+            class=theme.index_video.mobile === false ? 'hide-mobile' : ''
+          )
+            source(src=url_for(theme.index_video.url) type="video/mp4")
       #scroll-down
         i.anzhiyufont.anzhiyu-icon-angle-down.scroll-down-effects
     else

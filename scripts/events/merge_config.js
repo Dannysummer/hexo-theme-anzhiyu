@@ -21,6 +21,7 @@ hexo.extend.filter.register(
       },
       disable_top_img: false,
       index_img: null,
+      index_video: null,
       default_top_img: null,
       archive_img: null,
       tag_img: null,
