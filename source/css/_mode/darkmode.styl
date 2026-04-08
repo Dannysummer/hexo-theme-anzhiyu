@@ -1,35 +1,49 @@
 if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
   [data-theme='dark']
-    --global-bg: darken(#121212, 2)
-    --font-color: alpha(#FFFFFF, .7)
+    --global-bg: darken(#1a1a1a, 2)
+    --font-color: alpha(#f0f0f0, .9)
     --hr-border: alpha(#FFFFFF, .4)
     --hr-before-color: alpha(#FFFFFF, .7)
-    --search-bg: #121212
+    --search-bg: darken(#1a1a1a, 2)
     --search-input-color: alpha(#FFFFFF, .7)
     --search-result-title: alpha(#FFFFFF, .9)
-    --preloader-bg: darken(#121212, 2)
+    --preloader-bg: darken(#1a1a1a, 2)
     --preloader-color: alpha(#FFFFFF, .7)
     --tab-border-color: #2c2c2c
     --tab-botton-bg: #2c2c2c
     --tab-botton-color: alpha(#FFFFFF, .7)
-    --tab-button-hover-bg: lighten(#121212, 15)
-    --tab-button-active-bg: #121212
-    --card-bg: #121212
-    --sidebar-bg: #121212
-    --btn-hover-color: lighten(#121212, 40)
+    --tab-button-hover-bg: lighten(#1a1a1a, 15)
+    --tab-button-active-bg: #1a1a1a
+    --card-bg: #1a1a1a
+    --sidebar-bg: #1a1a1a
+    --btn-hover-color: lighten(#1a1a1a, 40)
     --btn-color: alpha(#FFFFFF, .7)
-    --btn-bg: lighten(#121212, 5)
-    --text-bg-hover: lighten(#121212, 15)
+    --btn-bg: lighten(#1a1a1a, 5)
+    --text-bg-hover: lighten(#1a1a1a, 15)
     --light-grey: alpha(#FFFFFF, .7)
     --dark-grey: alpha(#FFFFFF, .2)
     --white: alpha(#FFFFFF, .9)
     --text-highlight-color: alpha(#FFFFFF, .9)
     --blockquote-color: alpha(#FFFFFF, .7)
-    --blockquote-bg: lighten(#121212, 10)
-    --reward-pop: lighten(#121212, 10)
+    --blockquote-bg: lighten(#1a1a1a, 10)
+    --reward-pop: lighten(#1a1a1a, 10)
     --toc-link-color: alpha(#FFFFFF, .6)
-    --scrollbar-color: lighten(#121212, 5)
-    --timeline-bg: lighten(#121212, 5)
+    // --scrollbar-color: lighten(#121212, 5)
+    --scrollbar-color: rgba(92, 148, 255, 0.4)
+    --timeline-bg: lighten(#1a1a1a, 5)
+
+    // 暗色主题专有变量
+    --anzhiyu-theme: #3B9EDE
+    --anzhiyu-theme-deep: #6ca1ff
+    --anzhiyu-theme-op: rgba(92, 148, 255, 0.14)
+    --anzhiyu-theme-op-deep: rgba(92, 148, 255, 0.87)
+    --anzhiyu-card-bg: rgba(255, 255, 255, 0.1)
+    --anzhiyu-fontcolor: #f0f0f0
+    --anzhiyu-background: #1a1a1a
+    --anzhiyu-secondtext: #ccc
+    --anzhiyu-card-border: rgba(255, 255, 255, 0.1)
+    --anzhiyu-maskbg: rgba(0, 0, 0, 0.6)
+    --anzhiyu-maskbgdeep: rgba(0, 0, 0, 0.85)
 
     #web_bg:before,
     #footer:before,
@@ -47,7 +61,7 @@ if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
 
     #article-container
       pre > code
-        background: lighten(#121212, 2)
+        background: lighten(#1a1a1a, 2)
 
       figure.highlight
         box-shadow: none
@@ -69,7 +83,7 @@ if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
       &.nav-fixed > #nav,
       &.not-top-img > #nav
         background: var(--anzhiyu-black);
-        box-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0)
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1)
     .post
       #page-header
         &.nav-fixed > #nav
@@ -113,11 +127,42 @@ if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
           background: var(--anzhiyu-card-bg);
 
     #artitalk_main #lazy
-      background: #121212
+      background: #1a1a1a
 
     #operare_artitalk .c2
-      background: #121212
+      background: #1a1a1a
 
     #card-toc
       +maxWidth900()
-        background: lighten(#121212, 5)
+        background: lighten(#1a1a1a, 5)
+
+    // 暗色主题毛玻璃效果适配
+    #aside-content .card-widget
+      background: rgba(0, 0, 0, $glass-opacity-dark)
+      border-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+      backdrop-filter: blur($glass-blur-lg)
+      -webkit-backdrop-filter: blur($glass-blur-lg)
+
+      &:hover
+        background: rgba(0, 0, 0, $glass-opacity-dark + 0.08)
+        border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.15)
+        box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                    0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+        transform: translateY(-2px)
+
+    // 导航栏暗色主题毛玻璃效果
+    #page-header.nav-fixed > #nav
+      background: rgba(0, 0, 0, $glass-opacity-dark)
+      border-bottom-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+      backdrop-filter: blur($glass-blur-xl)
+      -webkit-backdrop-filter: blur($glass-blur-xl)
+
+    // 文章列表卡片暗色主题毛玻璃效果
+    .recent-post-item
+      background: rgba(0, 0, 0, $glass-opacity-dark) !important
+      border-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+
+      &:hover
+        border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.15) !important
+        box-shadow: 0 0 15px 3px var(--anzhiyu-main), 0 0 30px 1.5px var(--anzhiyu-main) !important
+        transform: translateY(-2px)

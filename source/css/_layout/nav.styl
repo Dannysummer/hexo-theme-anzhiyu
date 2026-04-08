@@ -172,7 +172,7 @@
   .cardHover,
   .error404 #error-wrap .error-content,
   .layout > div:first-child:not(.recent-posts),
-  #recent-posts > .recent-post-item,
+  .recent-post-item,
   #aside-content .card-widget,
   .layout > .recent-posts .pagination > *:not(.space)
     box-shadow: none !important
@@ -263,7 +263,7 @@
   flex-direction row
   justify-content center
 
-#nav 
+#nav
   #blog_name,
   .mask-name-container,
   #menus,
@@ -271,6 +271,40 @@
   #nav-right #toggle-menu
     a
       border-radius 50px;
+
+// 导航栏毛玻璃效果
+#page-header.nav-fixed > #nav,
+#page-header.not-top-img > #nav
+  // 覆盖 head.styl 里 &.nav-fixed #nav 的 outline，避免底边出现浅色「白线」
+  outline: none
+  background: rgba(255, 255, 255, 0.1)
+  backdrop-filter: blur($glass-blur-xl)
+  -webkit-backdrop-filter: blur($glass-blur-xl)
+  border-bottom: 0px solid rgba(255, 255, 255, $glass-border-opacity-light)
+  transition: background var(--duration-normal) var(--easing-smooth),
+              backdrop-filter var(--duration-normal) var(--easing-smooth),
+              border-color var(--duration-normal) var(--easing-smooth),
+              box-shadow var(--duration-normal) var(--easing-smooth)
+
+  &:hover
+    background: rgba(255, 255, 255, $glass-opacity-light + 0.08)
+    border-bottom-color: rgba(255, 255, 255, $glass-border-opacity-light + 0.1)
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+
+[data-theme="dark"] #page-header.nav-fixed > #nav,
+[data-theme="dark"] #page-header.not-top-img > #nav
+  outline: none
+  background: rgba(0, 0, 0, $glass-opacity-dark)
+  border-bottom-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+  backdrop-filter: blur($glass-blur-2xl)
+  -webkit-backdrop-filter: blur($glass-blur-2xl)
+
+  &:hover
+    background: rgba(0, 0, 0, $glass-opacity-dark + 0.08)
+    border-bottom-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.1)
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
 .page #nav 
   #blog_name,
   .mask-name-container,

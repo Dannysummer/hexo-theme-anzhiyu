@@ -1,6 +1,6 @@
 #footer
   position: relative
-  background: linear-gradient(180deg, var(--anzhiyu-card-bg-none) 0%, var(--anzhiyu-card-bg) 25%);
+  background: transparent
   background-attachment: scroll
   background-position: bottom
   background-size: cover
@@ -25,6 +25,13 @@
   overflow: hidden;
   z-index: 1002;
   transition: 0.3s;
+  // 毛玻璃效果
+  backdrop-filter: blur($glass-blur-md)
+  -webkit-backdrop-filter: blur($glass-blur-md)
+  border: 1px solid var(--anzhiyu-card-border)
+  border-radius: var(--anzhiyu-radius)
+  box-shadow: 0 0 var(--glow-radius) var(--glow-spread) transparent
+
   a
     &:hover
       color: var(--anzhiyu-lighttext);
@@ -80,17 +87,21 @@
     .deal_link
       display: flex;
       margin: 1rem 27px;
-      color: var(--anzhiyu-card-bg);
+      color: var(--anzhiyu-fontcolor);
       border-radius: 3rem;
       width: 32px;
       height: 32px;
-      background: var(--anzhiyu-fontcolor);
+      background: var(--anzhiyu-card-bg);
       justify-content: center;
       align-items: center;
-      transition: 0.3s;
+      transition: 0.3s, box-shadow var(--duration-normal) var(--easing-smooth);
+      border: 1px solid var(--anzhiyu-card-border)
+
       &:hover
         color: var(--anzhiyu-white);
         background: var(--anzhiyu-main);
+        box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                    0 0 calc(var(--glow-radius) * 1.5) var(--glow-spread) var(--glow-color-light)
 
     .footer_mini_logo
       width: 50px;
@@ -167,4 +178,20 @@
     vertical-align: text-bottom
 [data-theme=light] .post #footer
   +maxWidth768()
-    background: linear-gradient(180deg, var(--anzhiyu-background) 0%, var(--anzhiyu-card-bg) 25%);
+    background: #ffffff00;
+
+// 暗色模式页脚毛玻璃效果
+[data-theme="dark"] #footer-bar
+  background: rgba(0, 0, 0, $glass-opacity-dark)
+  border-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+  backdrop-filter: blur($glass-blur-lg)
+  -webkit-backdrop-filter: blur($glass-blur-lg)
+
+  &:hover
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+
+  .deal_link
+    &:hover
+      box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                  0 0 calc(var(--glow-radius) * 1.5) var(--glow-spread) var(--glow-color-light)

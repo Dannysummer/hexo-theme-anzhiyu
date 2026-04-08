@@ -36,6 +36,23 @@
     overflow: hidden
     margin-top: 20px
     padding: 20px 24px
+    // 侧边栏卡片毛玻璃效果
+    background: rgba(255, 255, 255, $glass-opacity-light + 0.08) // background: rgba(255, 255, 255, $glass-opacity-light)
+    backdrop-filter: blur($glass-blur-md)
+    -webkit-backdrop-filter: blur($glass-blur-md)
+    border: 1px solid rgba(255, 255, 255, $glass-border-opacity-light)
+    transition: background var(--duration-normal) var(--easing-smooth),
+                backdrop-filter var(--duration-normal) var(--easing-smooth),
+                border-color var(--duration-normal) var(--easing-smooth),
+                box-shadow var(--duration-normal) var(--easing-smooth),
+                transform var(--duration-fast) var(--easing-smooth)
+
+    &:hover
+      // background: rgba(255, 255, 255, $glass-opacity-light + 0.08)
+      border-color: rgba(255, 255, 255, $glass-border-opacity-light + 0.15)
+      box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                  0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+      transform: translateY(-2px)
 
     if hexo-config('aside.mobile') == false
       +maxWidth768()
@@ -529,18 +546,22 @@
 if hexo-config('aside.enable')
   #aside-content
     >.card-widget.card-info
-      background: var(--anzhiyu-card-bg);
+      background: url('/img/card-info/avatar-bg.png') center center / cover no-repeat
       box-shadow: var(--anzhiyu-shadow-black);
       position: relative;
       padding: 0;
+      border-radius: 18px
+      overflow: hidden;
+      transition: box-shadow 0.5s ease, transform 0.5s ease;
       +maxWidth768()
         display: none;
       > .card-content
         padding: 1rem 1.2rem;
         min-height: 320px;
         position: relative;
+      // 渐变遮罩层（移植 ProfileCard 的 mask 效果）
       &::before
-        background: linear-gradient(-25deg,var(--anzhiyu-main),var(--anzhiyu-main-op-deep),var(--anzhiyu-main),var(--anzhiyu-main-op-deep));
+        background: rgba(0, 0, 0, 0.438);
         background-size: 400%;
         position: absolute;
         width: 100%;
@@ -549,29 +570,67 @@ if hexo-config('aside.enable')
         top: 0;
         content: '';
         animation: gradient 15s ease infinite;
-    .card-info
-      &:hover 
-        .author-info-avatar
-          opacity: 0;
-          transform: scale(0);
-        .author-info__description
-          opacity: 1;
-        .author-status
-          opacity: 0;
-          transform: scale(0);
+        transition: opacity 0.5s ease;
+        z-index: 1;
+      // 头像悬浮时的爆炸相框层（对齐整个卡片）
+      &::after
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/img/card-info/card-frame2.png') center center / 100% 100% no-repeat;
+        transform: scale(1.0);
+        opacity: 0.8;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 4;
+        pointer-events: none;
 
+    // 整体卡片 hover 效果（移植 ProfileCard）
+    >.card-widget.card-info:hover
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 5px 15px rgba(#3498db, 0.15);
+      transform: translateY(-3px);
+      &::before
+        opacity: 0.4; // 渐变遮罩淡出，露出更多背景
+      &::after
+        transform: scale(1.2);
+        opacity: 0.8; // 相框从0.8恢复为1并完全显示
+      .author-info-avatar
+        opacity: 0;
+        transform: scale(1.5) translateY(-10px);
+        filter: blur(3px);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      .author-info__description
+        opacity: 1;
+        transition: opacity 0.5s ease 0.1s;
+      .author-status
+        opacity: 0;
+        transform: scale(0);
+
+    .card-info
       .author-info-avatar
         margin: 45px auto
         display: flex
         justify-content: center
         width: 118px;
         height: 118px;
-        transition: cubic-bezier(.69,.39,0,1.21) .3s;
-        transform-origin: bottom;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-origin: bottom center;
         position: relative
+        z-index: 3;
         +maxWidth768()
           display: none
-      #author-info__sayhi 
+      .author-info__description
+        position: relative;
+        z-index: 3;
+      .author-status
+        position: relative;
+        z-index: 3;
+        transition: all 0.3s ease;
+      #author-info__sayhi
+        position: relative;
+        z-index: 3;
         text-align: left;
         color: var(--anzhiyu-white);
         background: var(--anzhiyu-white-op);
@@ -588,15 +647,29 @@ if hexo-config('aside.enable')
           color: var(--anzhiyu-fontcolor);
           transform: scale(1.1);
 
+      // 社交图标旋转效果（移植 ProfileCard）
+      .card-info-social-icons a:hover
+        transform: rotate(360deg) scale(1.1);
+        color: var(--anzhiyu-main);
+        background: rgba(#3498db, 0.15);
+
+      .card-info-social-icons a
+        transition: all 0.5s ease;
+
       .banner-button-group .banner-button
         border-radius: 35px;
         background: var(--anzhiyu-white-op);
+        transition: all 0.3s ease;
         &:hover
           background: var(--anzhiyu-white);
           color: var(--anzhiyu-black);
 
 [data-theme="dark"] #aside-content > .card-info
-  background: var(--anzhiyu-card-bg)
+  background: url('/img/card-info/avatar-bg.png') center center / cover no-repeat;
+  &:hover
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 5px 15px rgba(#3498db, 0.2);
+  &::before
+    background: linear-gradient(-25deg,#2a2a2a,#1a1a1a,#2a2a2a,#1a1a1a);
 
 @media screen and (max-width: 992px)
   #aside-content > .card-info

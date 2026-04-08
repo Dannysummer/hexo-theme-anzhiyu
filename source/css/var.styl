@@ -1,14 +1,15 @@
 // color
-$bright-blue = #425AEF
-$strong-cyan = #00c4b6
-$light-orange = #FF7242
+// 主题颜色系统 - 基于参考设计系统
+$bright-blue = #3498DB
+$strong-cyan = #3B9EDE
+$light-orange = #87CEEB
 $light-red = #F47466
 $dark-yellow = #f2b94b
 $themeColorEnable = hexo-config('theme_color') && hexo-config('theme_color.enable')
 $theme-color = $themeColorEnable && hexo-config('theme_color.main') ? convert(hexo-config('theme_color.main')) : $bright-blue
-$theme-dark-color = $themeColorEnable && hexo-config('theme_color.dark_main') ? convert(hexo-config('theme_color.dark_main')) : $dark-yellow
+$theme-dark-color = $themeColorEnable && hexo-config('theme_color.dark_main') ? convert(hexo-config('theme_color.dark_main')) : $strong-cyan
 $theme-paginator-color = $themeColorEnable && hexo-config('theme_color.paginator') ? convert(hexo-config('theme_color.paginator')) : $strong-cyan
-$theme-text-selection-color = $themeColorEnable && hexo-config('theme_color.text_selection') ? convert(hexo-config('theme_color.text_selection')) : $strong-cyan
+$theme-text-selection-color = $themeColorEnable && hexo-config('theme_color.text_selection') ? convert(hexo-config('theme_color.text_selection')) : rgba(52, 152, 219, 0.3)
 $theme-link-color = $themeColorEnable && hexo-config('theme_color.link_color') ? convert(hexo-config('theme_color.link_color')) : $bright-blue
 $theme-hr-color = $themeColorEnable && hexo-config('theme_color.hr_color') ? convert(hexo-config('theme_color.hr_color')) : $bright-blue
 $code-foreground = $themeColorEnable && hexo-config('theme_color.code_foreground') ? convert(hexo-config('theme_color.code_foreground')) : $light-red
@@ -16,8 +17,11 @@ $code-background = $themeColorEnable && hexo-config('theme_color.code_background
 $theme-toc-color = $themeColorEnable && hexo-config('theme_color.toc_color') ? convert(hexo-config('theme_color.toc_color')) : $strong-cyan
 
 // font
-$dafault-font-family = -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif
-$dafault-code-font = consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', sans-serif
+// 字体系统 - 基于参考设计系统
+// 中文字体 - ZhuZiAWan
+// 英文字体 - Montserrat
+$dafault-font-family = 'ZhuZiAWan', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif
+$dafault-code-font = 'Fira Code', 'Roboto Mono', Consolas, Menlo, 'PingFang SC', 'Microsoft YaHei', monospace
 $font-family = hexo-config('font.font-family') ? unquote(hexo-config('font.font-family')) : $dafault-font-family
 $code-font-family = hexo-config('font.code-font-family') ? unquote(hexo-config('font.code-font-family')) : $dafault-code-font
 $site-name-font = hexo-config('blog_title_font.font-family') && unquote(hexo-config('blog_title_font.font-family'))
@@ -182,5 +186,17 @@ $tab-active-border-color = $theme-color
 $tab-button-active-bg = $card-bg
 $tab-to-top-color = #99a9bf
 $tab-to-top-hover-color = $theme-color
+// 毛玻璃效果系统变量 (Glassmorphism)
+$glass-blur-sm = 3px
+$glass-blur-md = 5px
+$glass-blur-lg = 8px
+$glass-blur-xl = 10px
+$glass-blur-2xl = 15px
+$glass-blur-3xl = 20px
+$glass-opacity-light = 0.3
+$glass-opacity-dark = 0.3
+$glass-border-opacity-light = 0.3
+$glass-border-opacity-dark = 0.3
+
 // Tag Plugins - timeline
 $timeline-default-color = $theme-color

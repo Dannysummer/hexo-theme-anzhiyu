@@ -32,8 +32,8 @@
   --blockquote-bg: $blockquote-background-color
   --reward-pop: $reward-pop-up-bg
   --toc-link-color: $toc-link-color
-  --card-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, .05)
-  --card-hover-box-shadow: 0 3px 8px 6px rgba(7, 17, 27, .09)
+  --card-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)
+  --card-hover-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)
   --pseudo-hover: $pseudo-hover
   --headline-presudo: var(--anzhiyu-fontcolor)
   --scrollbar-color: $scrollbar-color
@@ -41,7 +41,7 @@
   --anzhiyu-deep-purple: #405589;
   --anzhiyu-meta-theme-color: #f7f9fe;
   --anzhiyu-bar-background: var(--anzhiyu-main);
-  --anzhiyu-theme-op: #4259ef23;
+  --anzhiyu-theme-op: #3498db23;
   --anzhiyu-card-bg-none: rgba(255, 255, 255, 0);
   --anzhiyu-main-op-deep: var(--anzhiyu-theme-op-deep) !important;
   --anzhiyu-gray-op: #9999992b;
@@ -62,7 +62,7 @@
   --anzhiyu-main-op: var(--anzhiyu-theme-op);
   --anzhiyu-shadow-theme: 0 8px 12px -3px var(--anzhiyu-theme-op);
   --anzhiyu-shadow-main: 0 8px 12px -3px var(--anzhiyu-main-op);
-  --anzhiyu-shadow-blue: 0 8px 12px -3px rgba(40, 109, 234, 0.2);
+  --anzhiyu-shadow-blue: 0 8px 12px -3px rgba(52, 152, 219, 0.2);
   --anzhiyu-shadow-white: 0 8px 12px -3px rgba(255, 255, 255, 0.2);
   --anzhiyu-shadow-black: 0 0 12px 4px rgba(0, 0, 0, 0.05);
   --anzhiyu-shadow-yellow: 0px 38px 77px -26px rgba(255, 201, 62, 0.12);
@@ -70,10 +70,10 @@
   --anzhiyu-shadow-green: 0 8px 12px -3px #87ee7936;
   --anzhiyu-shadow-border: 0 8px 16px -4px #2c2d300c;
   --anzhiyu-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0, 0.15);
-  --anzhiyu-logo-color: linear-gradient(215deg, #4584ff 0%, #cf0db9 100%);
+  --anzhiyu-logo-color: linear-gradient(215deg, #3498db 0%, #3B9EDE 100%);
   --anzhiyu-code-stress: var(--anzhiyu-main);
   --style-border: 1px solid var(--anzhiyu-card-border);
-  --anzhiyu-blue-main: #425AEF;
+  --anzhiyu-blue-main: #3498DB;
   --style-border-hover: 1px solid var(--anzhiyu-main);
   --style-border-dashed: 1px dashed var(--anzhiyu-theme-op);
   --style-border-avatar: 5px solid var(--anzhiyu-white);
@@ -84,21 +84,47 @@
   --anzhiyu-main-none: #b8b8b800 !important;
   --anzhiyu-wihite-font: #fff
 
+  // 动画时长系统 - 基于参考设计系统
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.8s;
+
+  // 缓动函数系统 - 基于参考设计系统
+  --easing-default: ease;
+  --easing-in: ease-in;
+  --easing-out: ease-out;
+  --easing-in-out: ease-in-out;
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  // 辉光效果系统变量 - 毛玻璃边缘发光
+  --glow-color: var(--anzhiyu-main);
+  --glow-color-light: var(--anzhiyu-theme);
+  --glow-opacity: 0.6;
+  --glow-radius: 15px;
+  --glow-spread: 3px;
+  // 毛玻璃CSS变量
+  --glass-opacity-light: 0.3;
+  --glass-opacity-dark: 0.3;
+  --glass-border-opacity-light: 0.3;
+  --glass-border-opacity-dark: 0.3;
+
 +schemeLight()
   --anzhiyu-meta-theme-post-color: #fff;
   --anzhiyu-meta-theme-color: #f7f9fe;
-  --anzhiyu-theme-op-deep: #4259efdd;
+  --anzhiyu-theme-op-deep: #3498dbdd;
   --global-bg: #f7f9fe;
   --anzhiyu-theme: $theme-color;
-  --anzhiyu-theme-deep: #1856fb;
-  --anzhiyu-theme-op: #4259ef23;
-  --anzhiyu-blue: #5ca1ff;
-  --anzhiyu-blue-tint: rgba(92, 161, 255, 0.1);
+  --anzhiyu-theme-deep: #2980b9;
+  --anzhiyu-theme-op: #3498db23;
+  --anzhiyu-blue: #3B9EDE;
+  --anzhiyu-blue-tint: rgba(52, 152, 219, 0.1);
   --anzhiyu-red: #d8213c;
   --anzhiyu-pink: #ff7c7c;
-  --anzhiyu-green: #57bd6a;
-  --anzhiyu-fontcolor: #363636;
-  --anzhiyu-background: #f7f9fe;
+  --anzhiyu-green: #42b883;
+  --anzhiyu-fontcolor: #333;
+  // --anzhiyu-background: #ffffff;
   --anzhiyu-reverse: #000;
   --anzhiyu-maskbg: rgba(255, 255, 255, 0.6);
   --anzhiyu-maskbgdeep: rgba(255, 255, 255, 0.85);
@@ -106,19 +132,19 @@
   --anzhiyu-hovertext: var(--anzhiyu-theme);
   --anzhiyu-ahoverbg: #f7f7fa;
   --anzhiyu-lighttext: var(--anzhiyu-main);
-  --anzhiyu-secondtext: rgba(60, 60, 67, 0.8);
+  --anzhiyu-secondtext: #666;
   --anzhiyu-scrollbar: rgba(60, 60, 67, 0.4);
   --anzhiyu-card-btn-bg: #edf0f7;
   --anzhiyu-post-blockquote-bg: #fafcff;
   --anzhiyu-post-tabs-bg: #f2f5f8;
   --anzhiyu-secondbg: #f7f7f9;
-  --anzhiyu-shadow-nav: 0 5px 12px -5px rgba(102, 68, 68, 0.05);
+  --anzhiyu-shadow-nav: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --anzhiyu-card-bg: #fff;
-  --anzhiyu-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0);
-  --anzhiyu-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0);
-  --anzhiyu-card-border: #e3e8f7;
-  --anzhiyu-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
-  --anzhiyu-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
+  --anzhiyu-shadow-lightblack: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --anzhiyu-shadow-light2black: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --anzhiyu-card-border: rgba(255, 255, 255, 0.4);
+  --anzhiyu-shadow-lightblack: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --anzhiyu-shadow-light2black: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --anzhiyu-wihite-font: #fff
 
 [data-theme="light"]
@@ -186,7 +212,7 @@
   --anzhiyu-card-btn-bg: #30343f;
   --anzhiyu-post-blockquote-bg: #000;
   --anzhiyu-post-tabs-bg: #121212;
-  --anzhiyu-secondbg: #21232a;
+  --anzhiyu-secondbg: #2a2121;
   --anzhiyu-shadow-nav: 0 5px 20px 0px rgba(28, 28, 28, 0.4);
   --anzhiyu-card-bg: #1d1e22;
   --anzhiyu-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0);
@@ -271,6 +297,37 @@ body
 
 input::placeholder
   color: var(--font-color)
+
+// 博客主容器背景图片
+#blog-container
+  background-image: url('/img/index/main.jpg')
+  background-position: center top
+  background-size: cover
+  background-repeat: no-repeat
+  background-attachment: fixed
+
+  // 毛玻璃效果：背景图片模糊 + 半透明遮罩
+  position: relative
+
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(0, 0, 0, 0.1)
+    backdrop-filter: blur($glass-blur-lg)
+    -webkit-backdrop-filter: blur($glass-blur-lg)
+    pointer-events: none
+
+  & > *
+    position: relative
+    z-index: 1
+
+  [data-theme="dark"] &
+    &::before
+      background: rgba(0, 0, 0, 0.6)
 
 #web_bg
   position: fixed
@@ -455,3 +512,67 @@ blockquote
   & + #content-inner
     +maxWidth768()
       padding:1.875rem 0rem 0
+
+// 毛玻璃+辉光效果基础类
+.glass-card
+  position: relative
+  overflow: hidden
+  background: rgba(255, 255, 255, $glass-opacity-light)
+  backdrop-filter: blur($glass-blur-md)
+  -webkit-backdrop-filter: blur($glass-blur-md)
+  border: 1px solid rgba(255, 255, 255, $glass-border-opacity-light)
+  transition: background var(--duration-normal) var(--easing-smooth),
+              backdrop-filter var(--duration-normal) var(--easing-smooth),
+              border-color var(--duration-normal) var(--easing-smooth),
+              box-shadow var(--duration-normal) var(--easing-smooth),
+              transform var(--duration-fast) var(--easing-smooth)
+
+  &:hover
+    background: rgba(255, 255, 255, $glass-opacity-light + 0.08)
+    border-color: rgba(255, 255, 255, $glass-border-opacity-light + 0.15)
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+    transform: translateY(-2px)
+
+  // 暗色模式适配
+  [data-theme="dark"] &
+    background: rgba(0, 0, 0, $glass-opacity-dark)
+    border-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+
+    &:hover
+      background: rgba(0, 0, 0, $glass-opacity-dark + 0.05)
+      border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.1)
+      box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                  0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color)
+
+// 全局辉光hover效果
+.glow-hover
+  transition: box-shadow var(--duration-normal) var(--easing-smooth),
+              transform var(--duration-fast) var(--easing-smooth)
+
+  &:hover
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 1.5) var(--glow-spread) var(--glow-color-light)
+    transform: translateY(-2px)
+
+// 文章列表卡片 - 应用毛玻璃效果（默认状态就是透明，hover 只有辉光）
+.recent-post-item
+  background: rgba(255, 255, 255, $glass-opacity-light - 0.2) !important
+  backdrop-filter: blur($glass-blur-md)
+  -webkit-backdrop-filter: blur($glass-blur-md - 0.15)
+  border: 1px solid rgba(255, 255, 255, $glass-border-opacity-light - 0.1)
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease
+
+  &:hover
+    border-color: rgba(255, 255, 255, $glass-border-opacity-light + 0.15) !important
+    box-shadow: 0 0 15px 3px var(--anzhiyu-main), 0 0 30px 1.5px var(--anzhiyu-main) !important
+    transform: translateY(-2px)
+
+  [data-theme="dark"] &
+    background: rgba(0, 0, 0, $glass-opacity-dark) !important
+    border-color: rgba(255, 255, 255, $glass-border-opacity-dark)
+
+    &:hover
+      border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.15) !important
+      box-shadow: 0 0 15px 3px var(--anzhiyu-main), 0 0 30px 1.5px var(--anzhiyu-main) !important
