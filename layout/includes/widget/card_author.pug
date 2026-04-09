@@ -18,3 +18,23 @@ if theme.aside.card_author.enable
             .author-info__desc=config.subtitle
           .card-info-social-icons.is-center
             !=fragment_cache('social', function(){return partial('includes/header/social')}) 
+
+      // 统计数据（移植 ProfileCard）
+      .card-info-stats
+        .stat-item
+          span.stat-label 文章
+          span.stat-value= site.posts.length
+        .stat-item
+          span.stat-label 标签
+          span.stat-value= site.tags.length
+        .stat-item
+          span.stat-label 分类
+          span.stat-value= site.categories.length
+
+      // Follow 按钮（移植 ProfileCard）
+      .card-info-follow-btn
+        i.fab.fa-github
+        span.follow-text Follow Me
+        - for (let i = 0; i < 60; i++)
+          span.line(style=`top: ${i * 0.5}px; transition-delay: ${Math.random() * 0.75}s`)
+ 

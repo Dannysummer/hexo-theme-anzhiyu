@@ -557,7 +557,7 @@ if hexo-config('aside.enable')
         display: none;
       > .card-content
         padding: 1rem 1.2rem;
-        min-height: 320px;
+        min-height: 200px;
         position: relative;
       // 渐变遮罩层（移植 ProfileCard 的 mask 效果）
       &::before
@@ -592,10 +592,10 @@ if hexo-config('aside.enable')
       box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 5px 15px rgba(#3498db, 0.15);
       transform: translateY(-3px);
       &::before
-        opacity: 0.4; // 渐变遮罩淡出，露出更多背景
+        opacity: 0.8; // 渐变遮罩淡出，露出更多背景
       &::after
         transform: scale(1.2);
-        opacity: 0.8; // 相框从0.8恢复为1并完全显示
+        opacity: 0.8;
       .author-info-avatar
         opacity: 0;
         transform: scale(1.5) translateY(-10px);
@@ -603,6 +603,9 @@ if hexo-config('aside.enable')
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       .author-info__description
         opacity: 1;
+        margin: 45px auto;
+        width: 118px;
+        text-align: center;
         transition: opacity 0.5s ease 0.1s;
       .author-status
         opacity: 0;
@@ -624,6 +627,7 @@ if hexo-config('aside.enable')
       .author-info__description
         position: relative;
         z-index: 3;
+        display: none;
       .author-status
         position: relative;
         z-index: 3;
@@ -663,6 +667,84 @@ if hexo-config('aside.enable')
         &:hover
           background: var(--anzhiyu-white);
           color: var(--anzhiyu-black);
+
+      // 统计数据（移植 ProfileCard）
+      .card-info-stats
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: 4px 0;
+        position: relative;
+        z-index: 3;
+
+        .stat-item
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1px;
+
+        .stat-label
+          font-size: 0.7rem;
+          color: rgba(255,255,255,0.7);
+
+        .stat-value
+          font-size: 1rem;
+          font-weight: 600;
+          color: #fff;
+
+      // Follow 按钮（移植 ProfileCard）
+      .card-info-follow-btn
+        position: relative;
+        width: 88%;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin: 4px auto 6px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(52, 152, 219, 0.85);
+        color: #fff;
+        cursor: pointer;
+        overflow: hidden;
+        transition: 0.5s;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        z-index: 3;
+        text-decoration: none;
+
+        .fab
+          font-size: 1.1rem;
+          position: relative;
+          z-index: 1;
+
+        .follow-text
+          position: relative;
+          z-index: 1;
+
+        &:hover
+          color: #1a1a2e;
+          filter: drop-shadow(0 0 8px rgba(135, 206, 235, 0.8)) drop-shadow(0 0 20px rgba(135, 206, 235, 0.6));
+          transform: translateY(-2px);
+          background: rgba(52, 152, 219, 1);
+
+        .line
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 0.5px;
+          background-color: rgba(135, 206, 235, 0.8);
+          z-index: 0;
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.25s ease-in-out;
+
+        &:hover .line
+          transform: scaleX(1);
+          transform-origin: left;
 
 [data-theme="dark"] #aside-content > .card-info
   background: url('/img/card-info/avatar-bg.png') center center / cover no-repeat;
