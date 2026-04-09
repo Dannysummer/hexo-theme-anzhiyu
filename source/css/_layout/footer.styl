@@ -18,7 +18,7 @@
 
 #footer-bar
   padding: 1rem;
-  color: var(--anzhiyu-fontcolor);
+  color: var(--footer-bar-font-color);
   margin-top: 1rem;
   background: rgba(0, 0, 0, 0.4);
   border: none;
@@ -31,8 +31,6 @@
     margin-top: 8px;
     margin-bottom: 8px;
     margin-right: 1rem;
-    color: var(--anzhiyu-fontcolor);
-    font-size: 1rem;
     font-weight: bold;
     white-space: nowrap;
     &.cc i
@@ -53,11 +51,35 @@
       flex-wrap: wrap;
       min-height: 32px;
       align-items: center;
+
+      a
+        color: #24baff;
+        font-size: 1.5rem;
+        
+        &:hover
+          color: #00d9ff;
+          text-shadow: 0px 0px 16px #00d9ff;
+      
+      #footer-type-tips
+          margin-top: 6px;
+
     .footer-bar-right
+      gap: 20px;
       display: flex;
+      font-size: 1.0rem;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
+
+      .footer-bar-link
+        color: var(--footer-bar-font-color)
+        font-size: 1.5rem
+        
+        &:hover
+          color: var(--anzhiyu-lighttext)
+      
+      .cc
+        font-size: 1.0rem
 
 #footer-wrap
   position: relative

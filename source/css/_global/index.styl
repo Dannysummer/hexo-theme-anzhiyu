@@ -74,6 +74,7 @@
   --anzhiyu-code-stress: var(--anzhiyu-main);
   --style-border: 1px solid var(--anzhiyu-card-border);
   --anzhiyu-blue-main: #3498DB;
+  --footer-bar-font-color:#ffffff
   --style-border-hover: 1px solid var(--anzhiyu-main);
   --style-border-dashed: 1px dashed var(--anzhiyu-theme-op);
   --style-border-avatar: 5px solid var(--anzhiyu-white);
@@ -146,6 +147,7 @@
   --anzhiyu-shadow-lightblack: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   --anzhiyu-shadow-light2black: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --anzhiyu-wihite-font: #fff
+  --footer-bar-font-color:#ffffff
 
 [data-theme="light"]
   --anzhiyu-meta-theme-post-color: #fff;
@@ -160,7 +162,8 @@
   --anzhiyu-red: #d8213c;
   --anzhiyu-pink: #ff7c7c;
   --anzhiyu-green: #57bd6a;
-  --anzhiyu-fontcolor: #ffffff;
+  --anzhiyu-fontcolor: #000000;
+  --footer-bar-font-color:#ffffff
   --anzhiyu-background: #f7f9fe;
   --anzhiyu-reverse: #000;
   --anzhiyu-maskbg: rgba(255, 255, 255, 0.6);
@@ -336,6 +339,20 @@ input::placeholder
   background-position: center
   background-size: 100% 100%
   background-repeat: no-repeat !important
+
+#web_bg_video
+  position: fixed
+  z-index: -999
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  object-fit: cover
+  pointer-events: none
+
+  @media screen and (max-width: 768px)
+    &.hide-mobile
+      display: none
 
 h1,
 h2,

@@ -9,6 +9,10 @@ html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside
     include ./head.pug
   body(data-type="anzhiyu")
     #web_bg
+    if theme.index_video && theme.index_video.url
+      - var videoClass = theme.index_video.mobile === false ? 'hide-mobile' : ''
+      video#web_bg_video(class=videoClass autoplay muted loop playsinline)
+        source(src=url_for(theme.index_video.url) type="video/mp4")
     #an_music_bg
     if theme.preloader.enable
       !=partial('includes/loading/index', {}, {cache: true})

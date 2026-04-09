@@ -212,14 +212,20 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   const scrollDownInIndex = () => {
     const handleScrollToDest = () => {
-      const bbTimeList = document.getElementById("bbTimeList");
-      if (bbTimeList) {
-        anzhiyu.scrollToDest(bbTimeList.offsetTop - 62, 300);
-      } else {
-        anzhiyu.scrollToDest(document.getElementById("home_top").offsetTop - 60, 300);
-      }
+      // 1. 获取当前视口高度 (1vh 的像素值)
+      const vh = window.innerHeight;
+      
+      // 2. 设定目标位置
+      // 如果你想滚到 100vh 的位置（即第一屏底部），就乘 1
+      // 如果你想滚到 100vh 到 200vh 中间，可以乘 1.5
+      // 如果你想滚到 200vh 的位置，就乘 2
+      const targetPosition = vh * 0.95; 
+  
+      // 3. 执行滚动
+      // 这里的 targetPosition 就是相对于页面顶部的绝对距离
+      anzhiyu.scrollToDest(targetPosition, 300);
     };
-
+  
     const $scrollDownEle = document.getElementById("scroll-down");
     $scrollDownEle && anzhiyu.addEventListenerPjax($scrollDownEle, "click", handleScrollToDest);
   };
