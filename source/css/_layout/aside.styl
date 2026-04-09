@@ -570,7 +570,7 @@ if hexo-config('aside.enable')
         top: 0;
         content: '';
         animation: gradient 15s ease infinite;
-        transition: opacity 0.5s ease;
+        transition: opacity 1s ease;
         z-index: 1;
       // 头像悬浮时的爆炸相框层（对齐整个卡片）
       &::after
@@ -583,7 +583,7 @@ if hexo-config('aside.enable')
         background: url('/img/card-info/card-frame2.png') center center / 100% 100% no-repeat;
         transform: scale(1.0);
         opacity: 0.8;
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
         z-index: 4;
         pointer-events: none;
 
@@ -592,10 +592,13 @@ if hexo-config('aside.enable')
       box-shadow: 0 15px 35px rgba(0,0,0,0.35), 0 5px 15px rgba(#3498db, 0.15);
       transform: translateY(-3px);
       &::before
+        background: rgba(0, 0, 0, 0);
         opacity: 0.8; // 渐变遮罩淡出，露出更多背景
+        transition: background 1s ease 0.1s;
       &::after
         transform: scale(1.2);
         opacity: 0.8;
+        transition: all 1s ease 0.1s;
       .author-info-avatar
         opacity: 0;
         transform: scale(1.5) translateY(-10px);
