@@ -21,7 +21,27 @@ if !theme.disable_top_img && page.top_img !== false
 else
   - var top_img = false
   - var isHomeClass = 'not-top-img'
-header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
+
+// Page Header 独立背景配置（优先级：video > img，仅首页生效）
+- var pageHeaderStyle = ''
+- var hasPageHeaderVideo = theme.page_header && theme.page_header.video && theme.page_header.video.url
+- var hasPageHeaderImg = theme.page_header && theme.page_header.img
+
+// 如果有 page_header 配置，不设置 header 背景，让 .page-header-bg 独立控制
+if !(is_home() && (hasPageHeaderVideo || hasPageHeaderImg))
+  - pageHeaderStyle = home_index_img_bg
+
+header#page-header(class=`${isHomeClass}` style=pageHeaderStyle)
+  if hasPageHeaderVideo && is_home()
+    .page-header-bg
+      video.banner-video(
+        autoplay loop muted playsinline
+        class=theme.page_header.video.mobile === false ? 'hide-mobile' : ''
+      )
+        source(src=url_for(theme.page_header.video.url) type="video/mp4")
+  else if hasPageHeaderImg && is_home()
+    .page-header-bg(style=`background: url(${theme.page_header.img}) top / cover no-repeat`)
+
   !=partial('includes/header/nav', {}, {cache: true})
   if top_img !== false
     if is_post()
