@@ -160,7 +160,7 @@
   --anzhiyu-red: #d8213c;
   --anzhiyu-pink: #ff7c7c;
   --anzhiyu-green: #57bd6a;
-  --anzhiyu-fontcolor: #363636;
+  --anzhiyu-fontcolor: #ffffff;
   --anzhiyu-background: #f7f9fe;
   --anzhiyu-reverse: #000;
   --anzhiyu-maskbg: rgba(255, 255, 255, 0.6);
@@ -331,7 +331,7 @@ input::placeholder
   left: 0
   -webkit-overflow-scrolling: touch;
   background-color: var(--anzhiyu-background) !important
-  background-image: url('/img/index/main.jpg') !important
+  background-image: url('/img/index/main.png') !important
   background-attachment: local
   background-position: center
   background-size: 100% 100%
@@ -569,3 +569,26 @@ blockquote
     &:hover
       border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.15) !important
       box-shadow: 0 0 15px 3px var(--anzhiyu-main), 0 0 30px 1.5px var(--anzhiyu-main) !important
+
+// 侧边栏卡片 - 毛玻璃效果（白天模式）
+// 注意：作者卡片 .card-info 有特殊背景，优先级最高，排除在外
+#aside-content .card-widget:not(.card-info),
+#aside-content #card-announcement,
+#aside-content #card-wechat,
+#aside-content #category-bar,
+#aside-content #bbTimeList,
+#topPostGroup > div
+  background: rgba(255, 255, 255, $glass-opacity-light - 0.15) !important
+  backdrop-filter: blur($glass-blur-md)
+  -webkit-backdrop-filter: blur($glass-blur-md - 0.15)
+  border: 1px solid rgba(255, 255, 255, $glass-border-opacity-light - 0.1)
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15)
+  transition: all 0.3s ease
+
+  &:hover
+    background: rgba(255, 255, 255, $glass-opacity-light - 0.05) !important
+    border-color: rgba(255, 255, 255, $glass-border-opacity-light + 0.1)
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) var(--glow-color),
+                0 0 calc(var(--glow-radius) * 2) calc(var(--glow-spread) * 0.5) var(--glow-color),
+                0 4px 15px rgba(0, 0, 0, 0.2)
+    transform: translateY(-2px)
