@@ -5,7 +5,8 @@
 
 #category-bar {
   padding: 0.5rem 10px;
-  background: var(--anzhiyu-card-bg);
+  background: var(--anzhiyu-card-bg-blur);
+  backdrop-filter: blur(40px);
   display: flex;
   white-space: nowrap;
   overflow: hidden;

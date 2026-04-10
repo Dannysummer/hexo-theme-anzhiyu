@@ -117,6 +117,7 @@
   --anzhiyu-theme-op-deep: #3498dbdd;
   --global-bg: #f7f9fe;
   --anzhiyu-theme: $theme-color;
+  --anzhiyu-theme-sky:#8de6ff
   --anzhiyu-theme-deep: #2980b9;
   --anzhiyu-theme-op: #3498db23;
   --anzhiyu-blue: #3B9EDE;
@@ -141,6 +142,7 @@
   --anzhiyu-secondbg: #f7f7f9;
   --anzhiyu-shadow-nav: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --anzhiyu-card-bg: #fff;
+  --anzhiyu-card-bg-blur: rgba(255,255,255,0.15)
   --anzhiyu-shadow-lightblack: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   --anzhiyu-shadow-light2black: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --anzhiyu-card-border: rgba(255, 255, 255, 0.4);
@@ -155,6 +157,7 @@
   --anzhiyu-theme-op-deep: #4259efdd;
   --global-bg: #f7f9fe;
   --anzhiyu-theme: $theme-color;
+  --anzhiyu-theme-sky:#8de6ff
   --anzhiyu-theme-deep: #1856fb;
   --anzhiyu-theme-op: #4259ef23;
   --anzhiyu-blue: #5ca1ff;
@@ -195,6 +198,7 @@
   --anzhiyu-theme-op-deep: #0084ffdd;
   --global-bg: #18171d;
   --anzhiyu-theme: $theme-dark-color;
+  --anzhiyu-theme--sky: #8de6ff;
   --anzhiyu-theme-deep: #0076e5;
   --anzhiyu-theme-op: #f2b94b23;
   --anzhiyu-blue: #0084ff;
@@ -233,6 +237,7 @@
   --anzhiyu-theme-op-deep: #0084ffdd;
   --global-bg: #18171d;
   --anzhiyu-theme: $theme-dark-color;
+  --anzhiyu-theme-sky: #8de6ff;
   --anzhiyu-theme-deep: #0076e5;
   --anzhiyu-theme-op: #f2b94b23;
   --anzhiyu-blue: #0084ff;
@@ -600,7 +605,7 @@ blockquote
     transform: translateY(70%) // 默认隐藏在底部
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%)
-    backdrop-filter: blur(10px)
+    backdrop-filter: blur(5px)
     -webkit-backdrop-filter: blur(10px)
     border-radius: 2px 2px 0 0
 
@@ -617,20 +622,20 @@ blockquote
     // 继承 .post-slide-overlay 内的标签样式
     .article-meta,
     .article-categories-original
-      background: rgba(255, 255, 255, 0.2)
+      background: rgba(0, 74, 87, 0.842)
       color: #fff
-      border-color: rgba(255, 255, 255, 0.3)
+      padding: 0px 10px
+      border-radius: 4px
     .sticky-warp
       background: var(--anzhiyu-main)
       border-color: var(--anzhiyu-main)
     .newPost
-      padding: 0px 10px
-      background: rgb(255, 184, 103)
-      color: #ffffff
-      font-weight: 700
-      border-radius: 8px;
-      font-size: 20px 
-      // border:2px solid #00ffffab
+      padding: 0px 14px;
+      background: #ffc05ff0;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 6px;
+      font-size: 20px;
     .unvisited-post
       padding: 0 10px
       border: 1px solid #0000005df
@@ -664,8 +669,13 @@ blockquote
       .content,
       .article-meta-label,
       .article-meta__tags,
-      .article-meta-date
+      .article-meta-date,
+      .article-meta__tags a,
+      .article-meta__tags span
         color: #fff !important
+
+      .article-meta__tags a:hover
+        color: var(--anzhiyu-theme) !important
 
       .article-categories-original,
       .newPost,
@@ -725,7 +735,9 @@ blockquote
     // 元信息行
     .article-meta-wrap
       margin-top: auto
-      padding: 0 20px!important
+      margin-bottom: 5px
+      gap: 10px
+      padding: 0 20px !important
 
 // hover 时抽拉上来
 .post_cover:hover .post-slide-overlay

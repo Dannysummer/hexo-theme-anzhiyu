@@ -2,24 +2,29 @@
   +maxWidth768()
     #aside-content
       background: var(--anzhiyu-background);
-      border: none;
+      border: 1px solid #378AC3;
       z-index 99
       margin-top: -1px
 #aside-content
   width: 300px
   animation: slide-in 0.6s 0.3s backwards;
+  border: 1px solid #378AC3;
+
 
   +minWidth1200()
     if hexo-config('aside.position') == 'right'
       padding-left: 15px
     else
       padding-right: 15px
+    border: 1px solid #378AC3;
 
   +maxWidth1200()
+    border: 1px solid #378AC3;
     width: 100%
     padding: 20px;
   
   +maxWidth768()
+    border: 1px solid #378AC3;
     padding: 0 20px 20px
 
   > .card-widget:first-child
@@ -509,10 +514,12 @@
         width: 80%
 +maxWidth1200()
   .aside-content
+    border: 1px solid #378AC3;
     max-width: none !important;
     display: none
 +maxWidth768()
   .aside-content
+    border: 1px solid #378AC3;
     display: block
 .page
   .sticky_layout

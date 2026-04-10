@@ -42,7 +42,7 @@ mixin postUI(posts)
               each item, index in article.categories.data
                 .article-categories-original=item.name
             if new_post
-              span.newPost=_p('post.new')
+              span.newPost ⭐New!
             a.unvisited-post(href=url_for(link) title=title data-url=url_for(link))= _p('post.unread')
 
           // 抽拉式信息遮罩
