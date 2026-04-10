@@ -91,7 +91,7 @@ hexo.extend.filter.register(
         enable: true,
         decode: false,
         author_href: null,
-        location: "长沙",
+        location: "杭州",
         license: "CC BY-NC-SA 4.0",
         license_url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
         avatarSinks: false,
@@ -132,10 +132,10 @@ hexo.extend.filter.register(
         runtime: {
           enable: false,
           launch_time: "04/01/2021 00:00:00",
-          work_img: "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg",
-          work_description: "距离月入25k也就还差一个大佬带我~",
-          offduty_img: "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg",
-          offduty_description: "下班了就该开开心心的玩耍，嘿嘿~",
+          // work_img: "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg",
+          // work_description: "距离月入25k也就还差一个大佬带我~",
+          // offduty_img: "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg",
+          // offduty_description: "下班了就该开开心心的玩耍，嘿嘿~",
         },
         bdageitem: {
           enable: false,

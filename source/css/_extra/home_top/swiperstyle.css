@@ -26,7 +26,8 @@ div#swiper_container {
   width: 100%;
   padding: 0;
   overflow: initial;
-  background: var(--card-bg);
+  backdrop-filter: blur(40px);
+  /* background: var(--card-bg); */
   border-radius: 12px;
   border: var(--style-border);
 }

@@ -587,6 +587,150 @@ blockquote
       border-color: rgba(255, 255, 255, $glass-border-opacity-dark + 0.15) !important
       box-shadow: 0 0 15px 3px var(--anzhiyu-main), 0 0 30px 1.5px var(--anzhiyu-main) !important
 
+// 抽拉式信息遮罩效果
+.post_cover
+  position: relative
+  overflow: hidden
+
+  .post-slide-overlay
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    transform: translateY(70%) // 默认隐藏在底部
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    border-radius: 2px 2px 0 0
+
+  // 标签始终显示在左上角，不参与抽拉
+  .post-cover-tips
+    position: absolute
+    top: 20px
+    left: 20px
+    z-index: 10
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 6px
+    // 继承 .post-slide-overlay 内的标签样式
+    .article-meta,
+    .article-categories-original
+      background: rgba(255, 255, 255, 0.2)
+      color: #fff
+      border-color: rgba(255, 255, 255, 0.3)
+    .sticky-warp
+      background: var(--anzhiyu-main)
+      border-color: var(--anzhiyu-main)
+    .newPost
+      padding: 0px 10px
+      background: rgb(255, 184, 103)
+      color: #ffffff
+      font-weight: 700
+      border-radius: 8px;
+      font-size: 20px 
+      // border:2px solid #00ffffab
+    .unvisited-post
+      padding: 0 10px
+      border: 1px solid #0000005df
+      background: rgba(255, 70, 70, 0.986)
+      color: #fff
+      border-radius: 4px
+      // 已读状态样式
+      &.is-read
+        background: rgba(0, 123, 255, 0.986)
+        border-color: rgba(0, 123, 255, 0.986)
+
+    // 确保内容可滚动
+    .recent-post-info
+      max-height: 80vh
+      overflow-y: auto
+      padding: 20px
+      color: #fff
+      display: flex
+      flex-direction: column
+
+      &::-webkit-scrollbar
+        width: 4px
+
+      &::-webkit-scrollbar-thumb
+        background: rgba(255, 255, 255, 0.3)
+        border-radius: 2px
+
+      // 调整子元素颜色
+      .article-title,
+      .article-meta,
+      .content,
+      .article-meta-label,
+      .article-meta__tags,
+      .article-meta-date
+        color: #fff !important
+
+      .article-categories-original,
+      .newPost,
+      .unvisited-post
+        background: rgba(255, 255, 255, 0.2)
+        color: #fff
+        border-color: rgba(255, 255, 255, 0.3)
+
+      .sticky-warp
+        background: var(--anzhiyu-main)
+        border-color: var(--anzhiyu-main)
+
+    // 第一行：标签 + 标题同一行左对齐（覆盖 homepage .article-title 的 width:100%）
+    .recent-post-info-top-main
+      display: flex
+      flex-direction: row
+      flex-wrap: nowrap
+      align-items: center
+      justify-content: flex-start
+      gap: 8px
+      margin-top: 0
+      margin-bottom: 8px
+      width: 100%
+
+      .recent-post-info-top-tips
+        flex-shrink: 0
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        margin-top: 0 !important
+
+      .article-title
+        flex: 1 1 auto
+        min-width: 0
+        width: auto !important
+        margin-top: 0 !important
+        margin-bottom: 0 !important
+        display: block !important
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        -webkit-line-clamp: unset !important
+        -webkit-box-orient: unset !important
+
+    // 第二行：日期整行右对齐
+    .recent-post-info-top-meta
+      display: flex
+      flex-direction: row-reverse
+      align-items: center
+      width: 100%
+      margin-bottom: 8px
+
+      .post-meta-date
+        color: rgba(255, 255, 255, 0.8) !important
+        text-align: right
+
+    // 元信息行
+    .article-meta-wrap
+      margin-top: auto
+      padding: 0 20px!important
+
+// hover 时抽拉上来
+.post_cover:hover .post-slide-overlay
+  transform: translateY(0)
+
 // 侧边栏卡片 - 毛玻璃效果（白天模式）
 // 注意：作者卡片 .card-info 有特殊背景，优先级最高，排除在外
 #aside-content .card-widget:not(.card-info),
