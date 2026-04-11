@@ -1,7 +1,115 @@
-// 文章已读状态管理
+// 文章已读状态管理 + 未读卡片扫光动画
 (function() {
   const STORAGE_KEY = 'anzhiyu_read_posts';
   let lastUrl = location.href;
+
+  // ========== 未读卡片扫光动画配置 ==========
+  // 默认配置
+  const DEFAULT_SHINE_CONFIG = {
+    enable: true,
+    angle: 10,
+    duration: '4s',
+    delay: '2s',
+    gradient: 'rgba(255, 255, 255, 0.2)'
+  };
+
+  // 从 Hexo 主题配置中读取扫光参数
+  function getShineConfig() {
+    // 尝试从全局配置读取
+    if (typeof theme !== 'undefined' && theme.unreadCardShine) {
+      return { ...DEFAULT_SHINE_CONFIG, ...theme.unreadCardShine };
+    }
+    return DEFAULT_SHINE_CONFIG;
+  }
+
+  // 动态注入扫光动画 CSS
+  function injectShineAnimation() {
+    const config = getShineConfig();
+    
+    // 如果未启用，直接返回
+    if (!config.enable) return;
+
+    // 检查是否已注入
+    if (document.getElementById('unread-card-shine-style')) return;
+
+    const style = document.createElement('style');
+    style.id = 'unread-card-shine-style';
+
+    // 构建带倾斜角度的扫光 CSS
+    const angle = config.angle || 20;
+    const duration = config.duration || '3s';
+    const delay = config.delay || '0.5s';
+    const gradient = config.gradient || 'rgba(255, 255, 255, 0.1)';
+
+    style.textContent = `
+      /* 未读文章卡片 - 可配置倾斜扫光效果 */
+      .recent-post-item:has(.unvisited-post:not(.is-read)) {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* 倾斜扫光效果 */
+      .recent-post-item:has(.unvisited-post:not(.is-read))::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 200%;
+        height: 150%;
+        background: linear-gradient(
+          ${90 + angle}deg,
+          transparent 0%,
+          ${gradient} 50%,
+          transparent 100%
+        );
+        animation: card-shine-diagonal ${duration} ease-in-out infinite;
+        pointer-events: none;
+        z-index: 10;
+        transform: skewX(-${angle}deg);
+      }
+
+      /* 卡片扫光动画 - 波浪式延迟 */
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(1)::before {
+        animation-delay: 0s;
+      }
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(2)::before {
+        animation-delay: ${delay};
+      }
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(3)::before {
+        animation-delay: calc(${delay} * 2);
+      }
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(4)::before {
+        animation-delay: calc(${delay} * 3);
+      }
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(5)::before {
+        animation-delay: calc(${delay} * 4);
+      }
+      .recent-post-item:has(.unvisited-post:not(.is-read)):nth-child(n+6)::before {
+        animation-delay: calc(${delay} * 5);
+      }
+
+      /* 倾斜扫光动画关键帧 */
+      @keyframes card-shine-diagonal {
+        0% {
+          left: -150%;
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          left: 100%;
+          opacity: 0;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
+  // ========== 扫光动画配置结束 ==========
 
   // 获取已读文章列表
   function getReadPosts() {
@@ -81,6 +189,9 @@
   // 页面加载完成后初始化
   function onReady() {
     init();
+    
+    // 注入扫光动画
+    injectShineAnimation();
     
     // 监听 popstate 事件（后退/前进按钮）
     window.addEventListener('popstate', function() {

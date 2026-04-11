@@ -111,7 +111,7 @@ body[data-type="album_detail"] #page .page-title {
   display: flex;
   position: relative;
   margin: 8px 0px;
-  border: 1px dashed var(--anzhiyu-theme-op);
+  border: 1px dashed var(--anzhiyu-card-border);
   width: 100%;
 }
 

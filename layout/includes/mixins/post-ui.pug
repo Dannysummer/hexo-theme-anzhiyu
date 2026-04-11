@@ -34,6 +34,9 @@ mixin postUI(posts)
 
           // 标签始终显示在左上角，不参与抽拉
           .post-cover-tips
+            if new_post
+              span.newPost ⭐New!
+            a.unvisited-post(href=url_for(link) title=title data-url=url_for(link))= _p('post.unread')
             if (is_home() && (article.top || article.sticky > 0))
               span.article-meta.sticky-warp
                 i.anzhiyufont.anzhiyu-icon-thumbtack.sticky
@@ -41,9 +44,6 @@ mixin postUI(posts)
             if (theme.post_meta.page.categories && article.categories.data.length > 0)
               each item, index in article.categories.data
                 .article-categories-original=item.name
-            if new_post
-              span.newPost ⭐New!
-            a.unvisited-post(href=url_for(link) title=title data-url=url_for(link))= _p('post.unread')
 
           // 抽拉式信息遮罩
           .post-slide-overlay

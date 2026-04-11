@@ -384,3 +384,7 @@ span.newPost:hover {
     0 8px 30px rgba(255, 107, 107, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
+
+/* ========== 未读标记卡片扫光动画 ========== */
+/* 注意：扫光动画已移至 read-status.js 动态注入，支持在 _config.anzhiyu.yml 中配置 */
+/* 如果需要禁用，请设置 unreadCardShine.enable: false */
